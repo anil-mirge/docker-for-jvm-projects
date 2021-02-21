@@ -12,7 +12,7 @@ Add the Jib plugin with the version 1.6.1 to the relevant section of the `pom.xm
                 <plugin>
                     <groupId>com.google.cloud.tools</groupId>
                     <artifactId>jib-maven-plugin</artifactId>
-                    <version>1.6.1</version>
+                    <version>2.7.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -23,7 +23,8 @@ Add the Jib plugin with the version 1.6.1 to the relevant section of the `pom.xm
 Now that the Jib plugin has been applied, you can build and push an image without the use of the Docker daemon. The goal will not create a `Dockerfile` nor does it build a Docker image.
 
 ```
-$ ./mvnw compile com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Dimage=bmuschko/todo-web-service:2.0.0
+$ ./mvnw compile jib:build -Dimage=anilmirge/todo-web-service:2.0.0 (or) 
+$ ./mvnw compile com.google.cloud.tools:jib-maven-plugin:2.7.1:build -Dimage=anilmirge/todo-web-service:2.0.0
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ---------------< com.bmuschko:todo-web-service-exercise >---------------
@@ -38,14 +39,14 @@ $ ./mvnw compile com.google.cloud.tools:jib-maven-plugin:1.6.1:build -Dimage=bmu
 [INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ todo-web-service-exercise ---
 [INFO] Nothing to compile - all classes are up to date
 [INFO]
-[INFO] --- jib-maven-plugin:1.6.1:build (default-cli) @ todo-web-service-exercise ---
+[INFO] --- jib-maven-plugin:2.7.1:build (default-cli) @ todo-web-service-exercise ---
 [INFO]
-[INFO] Containerizing application to bmuschko/todo-web-service:2.0.0...
+[INFO] Containerizing application to anilmirge/todo-web-service:2.0.0...
 [WARNING] Base image 'gcr.io/distroless/java' does not use a specific image digest - build may not be reproducible
 [INFO]
 [INFO] Container entrypoint set to [java, -cp, /app/resources:/app/classes:/app/libs/*, com.bmuschko.todo.webservice.Application]
 [INFO]
-[INFO] Built and pushed image as bmuschko/todo-web-service:2.0.0
+[INFO] Built and pushed image as anilmirge/todo-web-service:2.0.0
 [INFO] Executing tasks:
 [INFO] [==============================] 100.0% complete
 [INFO]
@@ -67,10 +68,10 @@ The image name can be hard-coded as part of the plugin configuration.
                 <plugin>
                     <groupId>com.google.cloud.tools</groupId>
                     <artifactId>jib-maven-plugin</artifactId>
-                    <version>1.6.1</version>
+                    <version>2.7.1</version>
                     <configuration>
                         <to>
-                            <image>bmuschko/todo-web-service:${project.version}</image>
+                            <image>anilmirge/todo-web-service:${project.version}</image>
                         </to>
                     </configuration>
                 </plugin>
@@ -80,10 +81,11 @@ The image name can be hard-coded as part of the plugin configuration.
 </project>
 ```
 
-You can build and push the image with the Docker daemon by using the goal `com.google.cloud.tools:jib-maven-plugin:1.6.1:dockerBuild`.
+You can build and push the image with the Docker daemon by using the goal `com.google.cloud.tools:jib-maven-plugin:2.7.1:dockerBuild`.
 
 ```
-$ ./mvnw compile com.google.cloud.tools:jib-maven-plugin:1.6.1:dockerBuild
+$ ./mvnw compile jib:dockerBuild (or) 
+$ ./mvnw compile com.google.cloud.tools:jib-maven-plugin:2.7.1:dockerBuild
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ---------------< com.bmuschko:todo-web-service-exercise >---------------
@@ -98,14 +100,14 @@ $ ./mvnw compile com.google.cloud.tools:jib-maven-plugin:1.6.1:dockerBuild
 [INFO] --- maven-compiler-plugin:3.8.0:compile (default-compile) @ todo-web-service-exercise ---
 [INFO] Nothing to compile - all classes are up to date
 [INFO]
-[INFO] --- jib-maven-plugin:1.6.1:dockerBuild (default-cli) @ todo-web-service-exercise ---
+[INFO] --- jib-maven-plugin:2.7.1:dockerBuild (default-cli) @ todo-web-service-exercise ---
 [INFO]
-[INFO] Containerizing application to Docker daemon as bmuschko/todo-web-service:2.0.0...
+[INFO] Containerizing application to Docker daemon as anilmirge/todo-web-service:2.0.0...
 [WARNING] Base image 'gcr.io/distroless/java' does not use a specific image digest - build may not be reproducible
 [INFO]
 [INFO] Container entrypoint set to [java, -cp, /app/resources:/app/classes:/app/libs/*, com.bmuschko.todo.webservice.Application]
 [INFO]
-[INFO] Built image to Docker daemon as bmuschko/todo-web-service:2.0.0
+[INFO] Built image to Docker daemon as anilmirge/todo-web-service:2.0.0
 [INFO] Executing tasks:
 [INFO] [==============================] 100.0% complete
 [INFO]
