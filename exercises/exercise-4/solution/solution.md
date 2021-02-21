@@ -2,7 +2,7 @@
 
 ## Maven
 
-Add the Jib plugin with the version 1.6.1 to the relevant section of the `pom.xml` file.
+Add the Jib plugin with the version 2.7.1 to the relevant section of the `pom.xml` file.
 
 ```xml
 <project>
