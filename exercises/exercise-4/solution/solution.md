@@ -81,7 +81,7 @@ The image name can be hard-coded as part of the plugin configuration.
 </project>
 ```
 
-You can build and push the image with the Docker daemon by using the goal `com.google.cloud.tools:jib-maven-plugin:2.7.1:dockerBuild`.
+You can also just build the image with the Docker daemon using the goal `jib:dockerBuild (or) com.google.cloud.tools:jib-maven-plugin:2.7.1:dockerBuild` and then manually push the image into docker hub.
 
 ```
 $ ./mvnw compile jib:dockerBuild (or) 
@@ -124,7 +124,7 @@ You should be able to find the image by running `docker images`:
 ```
 $ docker images
 REPOSITORY                                 TAG                 IMAGE ID            CREATED             SIZE
-bmuschko/todo-web-service                  2.0.0               5289ed839f93        49 years ago        157MB
+anilmirge/todo-web-service                  2.0.0               5289ed839f93        49 years ago        157MB
 ```
 
 ## Gradle
